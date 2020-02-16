@@ -40,6 +40,15 @@ class QuizBrain {
     }
   }
 
+  bool finishedQuiz() {
+    if (_questionNumber < _questionBank.length - 1) {
+      return false;
+    } else {
+      _questionNumber = 0;
+      return true;
+    }
+  }
+
   String getQuestionText() {
     return _questionBank[_questionNumber].questionText;
   }

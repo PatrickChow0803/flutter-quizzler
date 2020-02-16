@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizzler/question.dart';
 import 'package:quizzler/quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
@@ -49,6 +50,26 @@ class _QuizPageState extends State<QuizPage> {
 
       quizBrain.nextQuestion();
     });
+
+    if (quizBrain.finishedQuiz()) {
+      Alert(
+        context: context,
+        type: AlertType.success,
+        title: "RFLUTTER ALERT",
+        desc: "Flutter is more awesome with RFlutter Alert.",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "COOL",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onPressed: () => Navigator.pop(context),
+            width: 120,
+          )
+        ],
+      ).show();
+      scoreKeeper = [];
+    }
   }
 
   @override
